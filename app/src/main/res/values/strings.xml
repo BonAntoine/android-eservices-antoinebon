@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">android-eservices-antoinebon</string>
+    <string name="tab_title_linear">Ligne</string>
+    <string name="tab_title_grid">Grille</string>
 </resources>
