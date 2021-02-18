@@ -6,8 +6,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface characterApi {
+public interface CharacterApi {
 
     @GET("character")
-    Single<CharacterSearchResponse> getBookSearchResult(@Query("name") String searchByName, @Query("key") String apiKey);
+    Single<CharacterSearchResponse> getBookSearchResult(@Query("name") String searchByName);
 }
