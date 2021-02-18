@@ -3,6 +3,7 @@ package data.api.dependencyInjection;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 
+import data.SettingsConstant;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -14,6 +15,10 @@ public class DependencyInjection {
     private static Retrofit retrofit;
     private static Gson gson;
 
+    /**
+     *
+     * @return retrofit instance wuth the given URL in the setting constant file
+     */
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -24,7 +29,7 @@ public class DependencyInjection {
                     .build();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://rickandmortyapi.com/api/")
+                    .baseUrl(SettingsConstant.DEFAULT_API_URL)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(getGson()))
@@ -33,6 +38,10 @@ public class DependencyInjection {
         return retrofit;
     }
 
+    /**
+     * If null, create a new instance
+     * @return an instance of Gson
+     */
     public static Gson getGson() {
         if (gson == null) {
             gson = new Gson();

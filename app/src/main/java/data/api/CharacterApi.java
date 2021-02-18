@@ -1,5 +1,6 @@
 package data.api;
 
+import data.SettingsConstant;
 import data.api.model.CharacterSearchResponse;
 import io.reactivex.Single;
 import retrofit2.http.GET;
@@ -9,5 +10,5 @@ import retrofit2.http.Query;
 public interface CharacterApi {
 
     @GET("character")
-    Single<CharacterSearchResponse> getBookSearchResult(@Query("name") String searchByName);
+    Single<CharacterSearchResponse> getBookSearchResult(@Query(SettingsConstant.SEARCH_BY_NAME_TERMS) String searchByName);
 }
