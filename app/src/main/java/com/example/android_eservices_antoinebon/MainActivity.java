@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 return charListFragmentInstanceGrid;
             }
 
-            // I made tab name available in strings to make replace or traduction easier
+            // I made tab name available in strings.xml file to make replace or traduction easier
             @Override
             public CharSequence getPageTitle(int position) {
                 if (position == 0) {
