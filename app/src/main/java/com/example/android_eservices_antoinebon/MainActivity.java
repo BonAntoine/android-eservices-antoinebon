@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
     private void initViewPager() {
         viewPager = findViewById(R.id.main_view_pager);
 
-        CharListFragment charListFragmentInstance = CharListFragment.newInstance();
-        CharListFragment charListFragmentInstanceGrid = CharListFragment.newInstance();
+        CharListFragment charListFragmentInstance = CharListFragment.newInstance(0);
+        CharListFragment charListFragmentInstanceGrid = CharListFragment.newInstance(1);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             // Need to create a new instance for each tabs (here 2 instance because 2 tabs)
