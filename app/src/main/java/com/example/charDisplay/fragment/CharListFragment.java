@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_eservices_antoinebon.R;
+import com.example.charDisplay.adapter.CharacterViewItem;
+import com.example.viewModel.CharacterLinearViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +24,8 @@ public class CharListFragment extends Fragment {
     private View rootView;
     private RecyclerView recyclerView;
     private int layoutType;
+
+    private CharacterLinearViewModel characterLinearViewModel;
 
     // private constructor to force use newInstance
     private CharListFragment(int layoutType) {
@@ -40,6 +44,14 @@ public class CharListFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_char_linear, container, false);
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        // TODO check if call the data here is a good idea
+        characterLinearViewModel.searchCharacters();
+        setupRecyclerView();
     }
 
     private void setupRecyclerView() {

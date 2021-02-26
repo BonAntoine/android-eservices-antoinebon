@@ -4,17 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import data.api.CharacterApi;
-import data.api.dependencyInjection.DependencyInjection;
-import data.api.model.CharacterSearchResponse;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.charDisplay.fragment.CharListFragment;
 
