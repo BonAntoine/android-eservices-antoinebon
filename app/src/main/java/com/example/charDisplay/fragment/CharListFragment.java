@@ -12,9 +12,11 @@ import com.example.viewModel.CharacterLinearViewModel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import data.api.dependencyInjection.DependencyInjection;
 
 /**
  * Fragment class, it currently support linear and grid layout
@@ -50,6 +52,7 @@ public class CharListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // TODO check if call the data here is a good idea
+        characterLinearViewModel = new ViewModelProvider(requireActivity(), DependencyInjection.getViewModelFactory()).get(CharacterLinearViewModel.class);
         characterLinearViewModel.searchCharacters();
         setupRecyclerView();
     }

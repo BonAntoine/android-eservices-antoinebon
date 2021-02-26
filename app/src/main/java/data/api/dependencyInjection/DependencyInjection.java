@@ -1,9 +1,12 @@
 package data.api.dependencyInjection;
 
+import com.example.viewmodel.ViewModelFactory;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 
+import androidx.lifecycle.ViewModel;
 import data.SettingsConstant;
+import data.repository.CharacterDataRepository;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -14,6 +17,8 @@ public class DependencyInjection {
 
     private static Retrofit retrofit;
     private static Gson gson;
+    private static ViewModelFactory viewModelFactory;
+    private static CharacterDataRepository characterDataRepository;
 
     /**
      *
@@ -47,6 +52,16 @@ public class DependencyInjection {
             gson = new Gson();
         }
         return gson;
+    }
+
+    public static ViewModelFactory getViewModelFactory() {
+        if(characterDataRepository == null) {
+            characterDataRepository = new CharacterDataRepository();
+        }
+        if (viewModelFactory == null) {
+            viewModelFactory = new ViewModelFactory(characterDataRepository);
+        }
+        return viewModelFactory;
     }
 
 }

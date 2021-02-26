@@ -8,6 +8,7 @@ import com.example.charDisplay.mapper.CharacterMapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.lifecycle.ViewModel;
 import data.api.CharacterApi;
 import data.api.dependencyInjection.DependencyInjection;
 import data.api.model.CharacterSearchResponse;
@@ -17,13 +18,17 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class CharacterLinearViewModel {
+public class CharacterLinearViewModel extends ViewModel {
 
     private CompositeDisposable compositeDisposable;
     private CharacterDataRepository characterDataRepository;
 
     private List<CharacterViewItem> characterViewItemList = new ArrayList<CharacterViewItem>();
 
+    public CharacterLinearViewModel(CharacterDataRepository characterDataRepository) {
+        this.compositeDisposable = new CompositeDisposable();
+        this.characterDataRepository = characterDataRepository;
+    }
 
     public void searchCharacters() {
         // TODO handle data loading
