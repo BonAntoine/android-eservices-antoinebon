@@ -1,4 +1,4 @@
-package com.example.viewModel;
+package com.example.viewmodel;
 
 import androidx.annotation.NonNull;
 
@@ -6,6 +6,7 @@ import com.example.charDisplay.adapter.CharacterViewItem;
 import com.example.charDisplay.mapper.CharacterMapper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import androidx.lifecycle.ViewModel;
@@ -39,7 +40,9 @@ public class CharacterLinearViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(@NonNull CharacterSearchResponse characterSearchResponse) {
-                        System.out.println(characterSearchResponse.getCharacterRmList().get(0));
+
+                        // System.out.println(characterSearchResponse.getCharacterRmList().get(0));
+                        characterViewItemList.addAll(CharacterMapper.charResponseToList(characterSearchResponse));
                     }
 
                     @Override
@@ -51,4 +54,7 @@ public class CharacterLinearViewModel extends ViewModel {
                 }));
     }
 
+    public List<CharacterViewItem> getCharacterViewItemList() {
+        return characterViewItemList;
+    }
 }

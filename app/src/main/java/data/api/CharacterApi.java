@@ -10,5 +10,5 @@ import retrofit2.http.Query;
 public interface CharacterApi {
 
     @GET("character")
-    Single<CharacterSearchResponse> getBookSearchResult(@Query(SettingsConstant.SEARCH_BY_NAME_TERMS) String searchByName);
+    Single<CharacterSearchResponse> getCharacterSearchResult(@Query(SettingsConstant.SEARCH_BY_NAME_TERMS) String searchByName);
 }

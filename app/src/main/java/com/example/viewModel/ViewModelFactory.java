@@ -1,12 +1,9 @@
 package com.example.viewmodel;
 
-import com.example.charDisplay.adapter.CharacterViewItem;
-
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import data.repository.CharacterDataRepository;
 
-import com.example.viewModel.CharacterLinearViewModel;
 
 // on init le repo qu'on va utiliser pour créer les view model
 // Android crée pour nous les vieux model

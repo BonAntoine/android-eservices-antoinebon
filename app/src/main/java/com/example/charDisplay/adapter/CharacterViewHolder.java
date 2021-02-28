@@ -29,6 +29,7 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(CharacterViewItem characterViewItem) {
         this.characterViewItem = characterViewItem;
+        System.out.println("AHHHHHHHHHHHHHHHHHHHHHH" + characterViewItem.getName());
         this.nameTextView.setText(characterViewItem.getName());
         // TODO set image
     }

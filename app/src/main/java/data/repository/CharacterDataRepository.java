@@ -11,6 +11,6 @@ public class CharacterDataRepository {
     public Single<CharacterSearchResponse> getResponse() {
         // TODO merge with the local data
 
-        return DependencyInjection.getRetrofit().create(CharacterApi.class).getBookSearchResult("rick");
+        return DependencyInjection.getRetrofit().create(CharacterApi.class).getCharacterSearchResult("rick");
     }
 }

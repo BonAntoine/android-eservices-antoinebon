@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android_eservices_antoinebon.R;
-import com.example.charDisplay.adapter.CharacterViewItem;
-import com.example.viewModel.CharacterLinearViewModel;
+import com.example.charDisplay.adapter.CharacterAdapter;
+import com.example.viewmodel.CharacterLinearViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,6 +54,10 @@ public class CharListFragment extends Fragment {
         // TODO check if call the data here is a good idea
         characterLinearViewModel = new ViewModelProvider(requireActivity(), DependencyInjection.getViewModelFactory()).get(CharacterLinearViewModel.class);
         characterLinearViewModel.searchCharacters();
+
+        CharacterAdapter characterAdapter = new CharacterAdapter();
+        characterAdapter.bindViewModels(characterLinearViewModel.getCharacterViewItemList());
+
         setupRecyclerView();
     }
 

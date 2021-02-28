@@ -9,11 +9,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android_eservices_antoinebon.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
 
     private List<CharacterViewItem> characterViewItemList;
+
+    public CharacterAdapter() {
+        this.characterViewItemList = new ArrayList<>();;
+    }
+
+    public void bindViewModels(List<CharacterViewItem> characterViewItems) {
+        this.characterViewItemList.clear();
+        this.characterViewItemList.addAll(characterViewItems);
+        notifyDataSetChanged();
+    }
+
+
     @NonNull
     @Override
     public CharacterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,6 +43,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
 
     @Override
     public int getItemCount() {
-        return 0;
+        return characterViewItemList.size();
     }
 }
