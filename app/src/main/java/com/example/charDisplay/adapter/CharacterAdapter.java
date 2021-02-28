@@ -38,6 +38,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull CharacterViewHolder holder, int position) {
+        System.out.println("AAAAAAAAAAAAAAAAAA");
         holder.bind(characterViewItemList.get(position));
     }
 

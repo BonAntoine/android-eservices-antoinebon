@@ -7,11 +7,15 @@ import android.view.ViewGroup;
 
 import com.example.android_eservices_antoinebon.R;
 import com.example.charDisplay.adapter.CharacterAdapter;
+import com.example.charDisplay.adapter.CharacterViewItem;
 import com.example.viewmodel.CharacterLinearViewModel;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +30,7 @@ public class CharListFragment extends Fragment {
     private View rootView;
     private RecyclerView recyclerView;
     private int layoutType;
+    private CharacterAdapter characterAdapter;
 
     private CharacterLinearViewModel characterLinearViewModel;
 
@@ -51,26 +56,39 @@ public class CharListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        setupRecyclerView();
+
         // TODO check if call the data here is a good idea
         characterLinearViewModel = new ViewModelProvider(requireActivity(), DependencyInjection.getViewModelFactory()).get(CharacterLinearViewModel.class);
         characterLinearViewModel.searchCharacters();
 
-        CharacterAdapter characterAdapter = new CharacterAdapter();
-        characterAdapter.bindViewModels(characterLinearViewModel.getCharacterViewItemList());
 
-        setupRecyclerView();
+        characterLinearViewModel.getCharacterViewItemList().observe(getViewLifecycleOwner(), new Observer<List<CharacterViewItem>>() {
+                    @Override
+                    public void onChanged(List<CharacterViewItem> characterViewItems) {
+                        characterAdapter.bindViewModels(characterViewItems);
+                    }
+                });
+
+
+
+
     }
 
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
-        // recyclerView.setAdapter(bookAdapter);
+        characterAdapter = new CharacterAdapter();
+        recyclerView.setAdapter(characterAdapter);
         LinearLayoutManager l;
         if(layoutType == 0) {
+            System.out.println("LAYOUTTTT : ");
             l = new LinearLayoutManager(getContext());
         } else {
             // TODO dynamic span count ?
             l = new GridLayoutManager(getContext(), 3);
         }
+        l.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(l);
     }
 

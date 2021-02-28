@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import data.api.CharacterApi;
 import data.api.dependencyInjection.DependencyInjection;
@@ -24,7 +25,7 @@ public class CharacterLinearViewModel extends ViewModel {
     private CompositeDisposable compositeDisposable;
     private CharacterDataRepository characterDataRepository;
 
-    private List<CharacterViewItem> characterViewItemList = new ArrayList<CharacterViewItem>();
+    private MutableLiveData<List<CharacterViewItem>> characterViewItemList = new MutableLiveData<List<CharacterViewItem>>();
 
     public CharacterLinearViewModel(CharacterDataRepository characterDataRepository) {
         this.compositeDisposable = new CompositeDisposable();
@@ -42,7 +43,7 @@ public class CharacterLinearViewModel extends ViewModel {
                     public void onSuccess(@NonNull CharacterSearchResponse characterSearchResponse) {
 
                         // System.out.println(characterSearchResponse.getCharacterRmList().get(0));
-                        characterViewItemList.addAll(CharacterMapper.charResponseToList(characterSearchResponse));
+                        characterViewItemList.setValue(CharacterMapper.charResponseToList(characterSearchResponse));
                     }
 
                     @Override
@@ -54,7 +55,7 @@ public class CharacterLinearViewModel extends ViewModel {
                 }));
     }
 
-    public List<CharacterViewItem> getCharacterViewItemList() {
+    public MutableLiveData<List<CharacterViewItem>> getCharacterViewItemList() {
         return characterViewItemList;
     }
 }
