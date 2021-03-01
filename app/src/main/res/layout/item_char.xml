@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -11,25 +13,38 @@
             android:id="@+id/char_icon_imageview"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_launcher_background" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/char_name_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:text="Character name"
             android:textSize="13sp"
             android:textStyle="bold"
-            android:text="My char title" />
+            app:layout_constraintStart_toEndOf="@+id/char_icon_imageview"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/char_desc_textview"
+            android:id="@+id/char_species_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:text="species"
             android:textSize="13sp"
             android:textStyle="bold"
-            android:text="A little desc" />
+            app:layout_constraintStart_toEndOf="@+id/char_icon_imageview"
+            app:layout_constraintTop_toBottomOf="@+id/char_name_textview" />
+
+        <TextView
+            android:id="@+id/char_gender_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="gender"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/char_icon_imageview"
+            app:layout_constraintTop_toBottomOf="@+id/char_species_textview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
