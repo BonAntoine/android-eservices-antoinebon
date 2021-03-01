@@ -9,6 +9,15 @@ public class CharacterRM {
     private String status;
     private String species;
     private String gender;
+    private String image;
+
+    public String getImgUrl() {
+        return image;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.image = imgUrl;
+    }
 
     public void setId(String id) {
         this.id = id;

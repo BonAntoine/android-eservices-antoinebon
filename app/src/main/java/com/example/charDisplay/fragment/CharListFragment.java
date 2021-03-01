@@ -82,11 +82,10 @@ public class CharListFragment extends Fragment {
         recyclerView.setAdapter(characterAdapter);
         LinearLayoutManager l;
         if(layoutType == 0) {
-            System.out.println("LAYOUTTTT : ");
             l = new LinearLayoutManager(getContext());
         } else {
             // TODO dynamic span count ?
-            l = new GridLayoutManager(getContext(), 3);
+            l = new GridLayoutManager(getContext(), 2);
         }
         l.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(l);

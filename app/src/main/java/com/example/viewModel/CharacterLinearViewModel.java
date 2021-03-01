@@ -41,8 +41,6 @@ public class CharacterLinearViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(@NonNull CharacterSearchResponse characterSearchResponse) {
-
-                        // System.out.println(characterSearchResponse.getCharacterRmList().get(0));
                         characterViewItemList.setValue(CharacterMapper.charResponseToList(characterSearchResponse));
                     }
 

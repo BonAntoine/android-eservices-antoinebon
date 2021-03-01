@@ -3,11 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
 
         <ImageView
             android:id="@+id/char_icon_imageview"
@@ -21,8 +28,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Character name"
-            android:textSize="13sp"
+            android:textSize="15sp"
             android:textStyle="bold"
+            android:layout_marginLeft="10dp"
             app:layout_constraintStart_toEndOf="@+id/char_icon_imageview"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="species"
             android:textSize="13sp"
-            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
             app:layout_constraintStart_toEndOf="@+id/char_icon_imageview"
             app:layout_constraintTop_toBottomOf="@+id/char_name_textview" />
 
@@ -42,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="gender"
             android:textSize="13sp"
-            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
             app:layout_constraintStart_toEndOf="@+id/char_icon_imageview"
             app:layout_constraintTop_toBottomOf="@+id/char_species_textview" />
 

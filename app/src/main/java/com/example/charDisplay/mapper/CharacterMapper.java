@@ -28,11 +28,19 @@ public class CharacterMapper {
 
     }
 
+    /**
+     * convert a character to a view item character
+     * @param characterRm
+     * @return
+     */
     private static CharacterViewItem characterRmToCharacterViewItem(CharacterRM characterRm) {
         // TODO check if more transformation is needed for the view object
         // aka : when no name available, name = N.A.
         CharacterViewItem characterViewItem = new CharacterViewItem();
         characterViewItem.setName(characterRm.getName());
+        characterViewItem.setGender(characterRm.getGender());
+        characterViewItem.setSpecies(characterRm.getSpecies());
+        characterViewItem.setCharImageUrl(characterRm.getImgUrl());
         return characterViewItem;
     }
 }

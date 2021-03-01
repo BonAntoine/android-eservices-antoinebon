@@ -22,33 +22,6 @@ public class MainActivity extends AppCompatActivity {
         // Init the view pager
         initViewPager();
 
-        /*
-        final Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                DisposableSingleObserver<CharacterSearchResponse> characterApi = DependencyInjection.getRetrofit().create(CharacterApi.class).getBookSearchResult("rick")
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<CharacterSearchResponse>() {
-
-                            @Override
-                            public void onSuccess(@NonNull CharacterSearchResponse characterSearchResponse) {
-                                System.out.println(characterSearchResponse.getCharacterRmList().get(0));
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                // handle the error case
-                                //Yet, do not do nothing in this app
-                                System.out.println(e.toString());
-                            }
-                        });
-
-            }
-        });
-
-         */
-
     }
 
     private void initViewPager() {
