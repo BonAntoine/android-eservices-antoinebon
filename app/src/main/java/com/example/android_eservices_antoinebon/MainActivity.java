@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.charDisplay.fragment.CharListFragment;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         // Things to do on onCreate when launching main activity of the app
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle(R.string.app_name);
 
         // Init the view pager
         initViewPager();
@@ -56,4 +59,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

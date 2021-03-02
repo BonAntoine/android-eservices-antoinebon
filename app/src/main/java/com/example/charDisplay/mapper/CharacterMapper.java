@@ -29,6 +29,17 @@ public class CharacterMapper {
     }
 
     /**
+     * Convert a single character response into a single character view Item
+     * @param characterRM
+     * @return
+     */
+    public static CharacterViewItem charToViewItem(CharacterRM characterRM) {
+
+        return characterRmToCharacterViewItem(characterRM);
+
+    }
+
+    /**
      * convert a character to a view item character
      * @param characterRm
      * @return
@@ -41,6 +52,7 @@ public class CharacterMapper {
         characterViewItem.setGender(characterRm.getGender());
         characterViewItem.setSpecies(characterRm.getSpecies());
         characterViewItem.setCharImageUrl(characterRm.getImgUrl());
+        characterViewItem.setId(Integer.parseInt(characterRm.getId()));
         return characterViewItem;
     }
 }

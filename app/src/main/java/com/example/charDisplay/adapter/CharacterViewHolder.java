@@ -7,14 +7,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import data.SettingsConstant;
 
+import com.example.android_eservices_antoinebon.DetailsActivity;
 import com.example.android_eservices_antoinebon.MainActivity;
 import com.example.android_eservices_antoinebon.R;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class CharacterViewHolder extends RecyclerView.ViewHolder {
 
@@ -27,7 +27,7 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder {
     private CharacterViewItem characterViewItem;
 
     /**
-     * set all
+     * set all view object to their corresponding layout id
      * @param itemView
      */
     public CharacterViewHolder(@NonNull View itemView) {
@@ -41,8 +41,9 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                // startActivity(new Intent(MainActivity.this,StandingsActivity.class));
+                Intent intent = new Intent(itemView.getContext(), DetailsActivity.class);
+                intent.putExtra(SettingsConstant.ID_EXTRA_NAME, String.valueOf(characterViewItem.getId()));
+                itemView.getContext().startActivity(intent);
             }
         });
     }
