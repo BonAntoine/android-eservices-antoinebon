@@ -1,5 +1,6 @@
 package com.example.charDisplay.mapper;
 
+import com.example.android_eservices_antoinebon.R;
 import com.example.charDisplay.adapter.CharacterViewItem;
 
 import java.util.ArrayList;
@@ -53,6 +54,13 @@ public class CharacterMapper {
         characterViewItem.setSpecies(characterRm.getSpecies());
         characterViewItem.setCharImageUrl(characterRm.getImgUrl());
         characterViewItem.setId(Integer.parseInt(characterRm.getId()));
+
+        if(characterRm.getStatus() == null || characterRm.getStatus().equals("unknown")) {
+            // TODO make this text available in a resource file
+            characterViewItem.setStatus("neither dead or alive");
+        } else {
+            characterViewItem.setStatus(characterRm.getStatus());
+        }
         return characterViewItem;
     }
 }

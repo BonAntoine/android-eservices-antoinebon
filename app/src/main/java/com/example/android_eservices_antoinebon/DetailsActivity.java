@@ -37,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
         characterDataRepository = new CharacterDataRepository(characterLocalDataSource);
         characterDetailsView = new CharacterDetailsView(findViewById(android.R.id.content));
 
+        // Get the data of the detailed character
         DisposableSingleObserver<CharacterRM> characterApi = characterDataRepository.getById(Integer.parseInt(getIntent().getStringExtra(SettingsConstant.ID_EXTRA_NAME)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -49,12 +50,12 @@ public class DetailsActivity extends AppCompatActivity {
                                 .subscribeWith(new DisposableCompletableObserver() {
                                     @Override
                                     public void onComplete() {
-                                        System.out.println("FINISHHHHH");
+                                        // Here the data of the character is in the database
                                     }
 
                                     @Override
                                     public void onError(Throwable e) {
-
+                                        System.out.println(e);
                                     }
                                 });
                         // Bind it to the view
@@ -62,8 +63,7 @@ public class DetailsActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onError(Throwable e) {
-                        // handle the error case
-                        //Yet, do not do nothing in this app
+                        // print error stacktrace id error
                         System.out.println(e.toString());
                     }
                 });

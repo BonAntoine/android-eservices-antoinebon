@@ -59,7 +59,7 @@ public class CharListFragment extends Fragment {
 
         setupRecyclerView();
 
-        // TODO check if call the data here is a good idea
+        // TODO check if call the data here is a good practice
         characterLinearViewModel = new ViewModelProvider(requireActivity(), DependencyInjection.getViewModelFactory()).get(CharacterLinearViewModel.class);
         characterLinearViewModel.searchCharacters();
 
@@ -70,10 +70,6 @@ public class CharListFragment extends Fragment {
                         characterAdapter.bindViewModels(characterViewItems);
                     }
                 });
-
-
-
-
     }
 
     private void setupRecyclerView() {
@@ -90,6 +86,4 @@ public class CharListFragment extends Fragment {
         l.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(l);
     }
-
-
 }

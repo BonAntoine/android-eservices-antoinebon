@@ -3,4 +3,5 @@
     <string name="tab_title_linear">Line</string>
     <string name="tab_title_grid">Grid</string>
     <string name="title_detail">Details</string>
+    <string name="default_status_text">Neither dead or alive</string>
 </resources>

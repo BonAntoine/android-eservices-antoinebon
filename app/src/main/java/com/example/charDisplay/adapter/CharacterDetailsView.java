@@ -21,6 +21,7 @@ public class CharacterDetailsView {
     private TextView speciesTextView;
     private TextView genderTextView;
     private ImageView charImageView;
+    private TextView statusTextView;
 
     private CharacterViewItem characterViewItem;
 
@@ -34,7 +35,7 @@ public class CharacterDetailsView {
         this.speciesTextView = this.itemView.findViewById(R.id.char_details_species_textview);
         this.genderTextView = this.itemView.findViewById(R.id.char_details_gender_textview);
         this.charImageView = this.itemView.findViewById(R.id.char_details_icon_imageview);
-
+        this.statusTextView = this.itemView.findViewById(R.id.char_details_status_textview);
     }
 
     public void bind(CharacterViewItem characterViewItem) {
@@ -42,7 +43,7 @@ public class CharacterDetailsView {
         this.nameTextView.setText(characterViewItem.getName());
         this.speciesTextView.setText(characterViewItem.getSpecies());
         this.genderTextView.setText(characterViewItem.getGender());
-
+        this.statusTextView.setText(characterViewItem.getStatus());
         // set image
 
         Glide.with(this.itemView)
