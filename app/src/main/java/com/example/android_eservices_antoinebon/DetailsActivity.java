@@ -8,6 +8,8 @@ import com.example.viewmodel.CharacterLinearViewModel;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import data.SettingsConstant;
+import data.api.db.CharacterLocalDataSource;
+import data.api.dependencyInjection.DependencyInjection;
 import data.api.model.CharacterRM;
 import data.repository.CharacterDataRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,17 +31,20 @@ public class DetailsActivity extends AppCompatActivity {
 
         setTitle(R.string.title_detail);
 
-        characterDataRepository = new CharacterDataRepository();
+        CharacterLocalDataSource characterLocalDataSource = new CharacterLocalDataSource(DependencyInjection.getCharacterDatabase());
+
+        characterDataRepository = new CharacterDataRepository(characterLocalDataSource);
         characterDetailsView = new CharacterDetailsView(findViewById(android.R.id.content));
 
-System.out.println("bbbbb " + getIntent().getStringExtra(SettingsConstant.ID_EXTRA_NAME));
         DisposableSingleObserver<CharacterRM> characterApi = characterDataRepository.getById(Integer.parseInt(getIntent().getStringExtra(SettingsConstant.ID_EXTRA_NAME)))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<CharacterRM>() {
                     @Override
                     public void onSuccess(@NonNull CharacterRM characterRM) {
-                        System.out.println("aaaa" + charToViewItem(characterRM).getName());
+                        // Upsert the character to the db
+                        characterLocalDataSource.addCharacter(characterRM.getCharacterEntity());
+                        // Bind it to the view
                         characterDetailsView.bind(charToViewItem(characterRM));
                     }
                     @Override

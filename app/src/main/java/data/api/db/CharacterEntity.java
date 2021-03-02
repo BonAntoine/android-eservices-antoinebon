@@ -1,17 +1,31 @@
-package data.api.model;
+package data.api.db;
 
-import data.api.db.CharacterEntity;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import data.api.model.CharacterRM;
 
-// This model will be use in the data part on the application
-// RM mean Rick and Morty, to avoid confusion with existing Character classes
-public class CharacterRM {
+@Entity(tableName = "characterentity")
+public class CharacterEntity {
 
+    @NonNull
+    @PrimaryKey
     private String id;
     private String name;
     private String status;
     private String species;
     private String gender;
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     private String image;
+
+    public String getImage() {
+        return image;
+    }
+
 
     public String getImgUrl() {
         return image;
@@ -65,14 +79,14 @@ public class CharacterRM {
      * Link from the original object and the local database object
      * @return characterRm
      */
-    public CharacterEntity getCharacterEntity() {
-        CharacterEntity characterentity = new CharacterEntity();
-        characterentity.setGender(this.gender);
-        characterentity.setId(this.id);
-        characterentity.setImgUrl(this.image);
-        characterentity.setName(this.name);
-        characterentity.setSpecies(this.species);
-        characterentity.setStatus(this.status);
-        return characterentity;
+    public CharacterRM getCharacterRM() {
+        CharacterRM characterRM = new CharacterRM();
+        characterRM.setGender(this.gender);
+        characterRM.setId(this.id);
+        characterRM.setImgUrl(this.image);
+        characterRM.setName(this.name);
+        characterRM.setSpecies(this.species);
+        characterRM.setStatus(this.status);
+        return characterRM;
     }
 }

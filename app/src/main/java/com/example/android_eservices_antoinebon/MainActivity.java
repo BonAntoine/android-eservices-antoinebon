@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+import data.api.dependencyInjection.DependencyInjection;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setTitle(R.string.app_name);
+
+        DependencyInjection.setContext(this);
 
         // Init the view pager
         initViewPager();
