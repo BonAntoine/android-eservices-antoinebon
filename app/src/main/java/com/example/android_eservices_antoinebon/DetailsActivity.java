@@ -13,6 +13,7 @@ import data.api.dependencyInjection.DependencyInjection;
 import data.api.model.CharacterRM;
 import data.repository.CharacterDataRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -43,7 +44,19 @@ public class DetailsActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(@NonNull CharacterRM characterRM) {
                         // Upsert the character to the db
-                        characterLocalDataSource.addCharacter(characterRM.getCharacterEntity());
+                        Object res = characterLocalDataSource.addCharacter(characterRM.getCharacterEntity()).subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribeWith(new DisposableCompletableObserver() {
+                                    @Override
+                                    public void onComplete() {
+                                        System.out.println("FINISHHHHH");
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+                                });
                         // Bind it to the view
                         characterDetailsView.bind(charToViewItem(characterRM));
                     }
