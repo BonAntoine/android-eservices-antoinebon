@@ -20,6 +20,11 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
         this.characterViewItemList = new ArrayList<>();;
     }
 
+
+    /**
+     * Delete and push all viewItem in the list, need to clear it at the beginning
+     * @param characterViewItems
+     */
     public void bindViewModels(List<CharacterViewItem> characterViewItems) {
         this.characterViewItemList.clear();
         this.characterViewItemList.addAll(characterViewItems);
@@ -28,7 +33,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
 
 
     /**
-     * Here, regardless of wich tab is active, we are using the item_char layout.
+     * Here, regardless of which tab is active, we are using the item_char layout.
      * We can create another layout if we want to change the aspect of the element,
      *
      * @param parent
@@ -44,11 +49,21 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
         return characterViewHolder;
     }
 
+    /**
+     * Bind the view objetc to the right object in the layout (in the CharacterViewHolder)
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull CharacterViewHolder holder, int position) {
         holder.bind(characterViewItemList.get(position));
     }
 
+    /**
+     * If the value returned is zero, the recyclerView will not
+     * display antyhing
+     * @return
+     */
     @Override
     public int getItemCount() {
         return characterViewItemList.size();
