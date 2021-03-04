@@ -32,6 +32,9 @@ public class CharacterLinearViewModel extends ViewModel {
         this.characterDataRepository = characterDataRepository;
     }
 
+    /**
+     * Subscribe to a request in the data part of the application
+     */
     public void searchCharacters() {
         // TODO handle data loading
         compositeDisposable.clear();

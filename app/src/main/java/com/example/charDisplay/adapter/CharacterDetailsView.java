@@ -14,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import data.SettingsConstant;
 
+/**
+ * Same thing as characterViewItem but it contains more information
+ */
 public class CharacterDetailsView {
 
     private View itemView;

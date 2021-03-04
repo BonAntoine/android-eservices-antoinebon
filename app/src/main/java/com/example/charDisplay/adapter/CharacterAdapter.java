@@ -27,6 +27,14 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterViewHolder>{
     }
 
 
+    /**
+     * Here, regardless of wich tab is active, we are using the item_char layout.
+     * We can create another layout if we want to change the aspect of the element,
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public CharacterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
